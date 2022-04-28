@@ -1,20 +1,7 @@
-.App {
-  display: flex;
-  justify-content: center;
+body {
+  background-color: #005555;
 }
 
-button {
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-}
-
-.buttons {
-  display: grid;
-  width: 200px;
-  height: 200px;
-  gap: 2px;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
+.game {
+  text-align: center;
 }

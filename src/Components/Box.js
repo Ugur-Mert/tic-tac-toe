@@ -1,11 +1,11 @@
 import React from "react";
+import "./Box.css";
 
-export default function Box(props) {
+export const Box = ({ value, onClick }) => {
+  const style = value === "X" ? "button x" : "button o";
   return (
-    <div>
-      <button className="button" onClick={props.holdMarked}>
-        {props.isMarked ? "X" : "O"}
-      </button>
-    </div>
+    <button className={style} onClick={onClick}>
+      {value}
+    </button>
   );
-}
+};

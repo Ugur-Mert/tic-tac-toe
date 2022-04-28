@@ -1,42 +1,28 @@
+import React, { useState } from "react";
 import "./App.css";
-import Box from "./Components/Box";
-import { nanoid } from "nanoid";
-import React, { useState, useEffect } from "react";
+import { Board } from "./Components/Board";
 
-function App() {
-  const [boxes, setBoxes] = useState(createBoxes());
-  const [status, setStatus] = React.useState("");
+export default function App() {
+  const [board, setBoard] = useState(Array(9).fill(null));
+  const [player, setPlayer] = useState(true); // True = x, false = o
 
-  function createBoxes() {
-    const newBoxes = [];
-    for (let i = 0; i < 9; i++) {
-      newBoxes.push({ isMarked: false, id: nanoid() });
-    }
-
-    return newBoxes;
-  }
-
-  const ticTacToeElement = boxes.map((box) => (
-    <Box
-      key={box.id}
-      isMarked={box.isMarked}
-      holdMarked={() => holdMarked(box.id)}
-    />
-  ));
-
-  function holdMarked(id) {
-    setBoxes((oldBox) =>
-      oldBox.map((box) => {
-        return box.id === id ? { ...box, isMarked: !box.isMarked } : box;
-      })
-    );
-  }
+  const boxClick = (boxId) => {
+    const updatedBoard = board.map((value, i) => {
+      if (i === boxId) {
+        return player === true ? "X" : "O";
+      } else {
+        return value;
+      }
+    });
+    setBoard(updatedBoard);
+    setPlayer(!player);
+  };
 
   return (
-    <div className="App">
-      <div className="buttons">{ticTacToeElement}</div>
+    <div className="game">
+      <h1>Tic Tac Toe!</h1>
+      <h1>Player: {player === true ? "X" : "O"}</h1>
+      <Board board={board} onClick={boxClick} />
     </div>
   );
 }
-
-export default App;
