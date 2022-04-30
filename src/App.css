@@ -4,4 +4,14 @@ body {
 
 .game {
   text-align: center;
+  color: #069a8e;
+}
+.reset-btn {
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+
+  border-radius: 5px;
+  background-color: #069a8e;
 }
